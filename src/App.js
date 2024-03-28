@@ -1,9 +1,12 @@
 import './App.css';
 import { Routes, Route } from 'react-router';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import ProductAll from './page/ProductAll';
 import Login from './page/Login';
 import ProductDetail from './page/ProductDetail';
 import Navbar from './component/Navbar';
+import { useEffect, useState } from 'react';
+import PrivateRoute from './route/PrivateRoute';
 // 1.전체상품페이지, 로그인, 상품상세페이지
 // 1-1.네비게이션바 만들기.
 
@@ -18,13 +21,32 @@ import Navbar from './component/Navbar';
 // 7.상품을 검색할 수 있다.
 
 function App() {
+
+  const [authentication, setAuthentication] = useState(false)
+  const [userName, setUsername] = useState('')
+  const [userPassword, setUserPassword] = useState('')
+
+  useEffect(() => {
+    console.log("aaa, ", authentication)
+  }, [authentication])
+
   return (
-    <div>
-      <Navbar />
+    <div className='main-wrapper'>
+      <Navbar authentication={authentication} setAuthentication={setAuthentication} userName={userName} />
       <Routes>
         <Route path='/' element={<ProductAll />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/product/:id' element={<ProductDetail />} />
+        <Route
+          path='/login'
+          element={
+            <Login
+              setAuthentication={setAuthentication}
+              userName={userName}
+              setUsername={setUsername}
+              userPassword={userPassword}
+              setUserPassword={setUserPassword}
+            />}
+        />
+        <Route path='/product/:id' element={<PrivateRoute authentication={authentication} />} />
       </Routes>
     </div>
   );
