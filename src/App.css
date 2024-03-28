@@ -1,7 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main-wrapper {
+  width: 1920px;
+}
+
+.login-section {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .login-button {
   display: flex;
   justify-content: flex-end;
-  margin: 30px 20px 0 20px;
+  margin: 30px 50px 0 20px;
+  cursor: pointer;
 }
 
 .login-title {
@@ -9,15 +26,29 @@
   font-size: 20px;
 }
 
+.login-username {
+  font-size: 15px;
+  margin: 6px 20px;
+  font-weight: 500;
+}
+
 .nav-section {
   display: flex;
   justify-content: center;
+}
+
+.navbar-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .menu-list {
   display: flex;
   list-style-type: none;
   justify-content: center;
-  margin-right: 50px;
+  height: 100%;
+  list-style-type: none;
+  cursor: pointer;
 }
 .menu-list li {
   padding: 10px;
@@ -25,14 +56,18 @@
 
 .menu-area {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  width: 1300px;
+  margin-left: 120px;
+  margin-bottom: 20px;
 }
 
 .search-box {
   display: flex;
+  justify-content: flex-end;
   align-items: center;
-  /* margin-left: auto; */
+  margin-left: 30px;
 }
 
 .input-search {
@@ -48,4 +83,88 @@
   border-color: #4a90e2;
   box-shadow: 0 2px 4px rgba(74, 144, 226, 0.3);
   outline: none;
+}
+
+.card-box {
+  transition: all 0.3s ease-in-out;
+  margin: 20px 30px;
+}
+
+.card-box:hover {
+  transform: scale(1.05);
+}
+
+.brand-image {
+  cursor: pointer;
+}
+
+.login-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+  color: #333;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+  border-color: #007bff; /* 포커스 시 테두리 색상 변경 */
+  outline: none; /* 기본 아웃라인 제거 */
+}
+
+.login-form-button {
+  width: 100%;
+  padding: 10px;
+  background-image: radial-gradient(circle, #6fca5f, #58a045, #4e8a3e);
+  color: #f8f8f8;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.login-form-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.login-form-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
