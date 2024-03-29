@@ -24,6 +24,16 @@ const Navbar = ({ authentication, setAuthentication, userName }) => {
         alert("로그아웃 되었습니다.")
     }
 
+    const getSearch = (event) => {
+        if (event.key === "Enter") {
+            //입력한 검색어를 읽어와서
+            let keyword = event.target.value
+
+            //url을 바꿔준다
+            navigate(`/?q=${keyword}`)
+        }
+    }
+
     return (
         <div className='navbar-area'>
             <div className='login-section'>
@@ -57,7 +67,7 @@ const Navbar = ({ authentication, setAuthentication, userName }) => {
                 </ul>
                 <div className='search-box'>
                     <FontAwesomeIcon icon={faSearch} />
-                    <input className='input-search' type='text' />
+                    <input onKeyPress={(event) => getSearch(event)} className='input-search' type='text' />
                 </div>
             </div>
         </div>

@@ -1,28 +1,31 @@
-import React, { useState } from 'react'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import ProductCard from '../component/ProductCard'
 import { Container, Row, Col } from 'react-bootstrap'
+import { useSearchParams } from 'react-router-dom'
 
 const ProductAll = () => {
     const [productList, setProductList] = useState([])
+    const [query, setQuery] = useSearchParams()
+
     const getProducts = async () => {
-        let url = `https://my-json-server.typicode.com/jjhoooon/Noona-React-3/products`
+        let searchQuery = query.get("q") || ""
+        console.log("query : ", searchQuery)
+        let url = `http://localhost:5000/products?q=${searchQuery}`
         let response = await fetch(url)
         let data = await response.json()
         setProductList(data)
-        // console.log(data)
     }
 
     useEffect(() => {
         getProducts()
-    }, [])
+    }, [query])
 
     return (
         <div>
-            <Container>
+            <Container fluid="lg">
                 <Row>
                     {productList.map((menu) => (
-                        <Col lg={3}>
+                        <Col lg={4}>
                             <ProductCard item={menu} />
                         </Col>
                     ))}
