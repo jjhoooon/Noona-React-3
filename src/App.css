@@ -1,7 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Oswald", sans-serif;
 }
 
 .main-wrapper {
@@ -63,6 +65,35 @@
   margin-bottom: 20px;
 }
 
+@media (min-width: 768px) {
+  .menu-toggle-button {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-list {
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    background-color: #ffffff;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+
+  .menu-list.open {
+    transform: translateX(0);
+  }
+
+  .menu-toggle-button {
+    display: block;
+  }
+}
+
 .search-box {
   display: flex;
   justify-content: flex-end;
@@ -86,8 +117,12 @@
 }
 
 .card-box {
+  width: 450px;
+  white-space: normal;
+  max-width: 100%;
   transition: all 0.3s ease-in-out;
   margin: 20px 30px;
+  padding: 20px;
 }
 
 .card-box:hover {
@@ -140,14 +175,14 @@
 }
 
 .form-group input:focus {
-  border-color: #007bff; /* 포커스 시 테두리 색상 변경 */
-  outline: none; /* 기본 아웃라인 제거 */
+  border-color: #007bff;
+  outline: none;
 }
 
 .login-form-button {
   width: 100%;
   padding: 10px;
-  background-image: radial-gradient(circle, #6fca5f, #58a045, #4e8a3e);
+  background-color: #a3f3cf;
   color: #f8f8f8;
   border: none;
   border-radius: 4px;
@@ -160,11 +195,144 @@
 }
 
 .login-form-button:hover {
-  background-color: #0056b3;
+  background-color: #30a671;
   transform: translateY(-2px);
 }
 
 .login-form-button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.detail-product-area {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+.detail-main-container {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding: 20px;
+  gap: 20px;
+}
+
+.detail-left-container {
+  flex-basis: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.detail-left-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+.detail-right-container {
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.size-button-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.size-button {
+  padding: 5px 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.size-button:hover {
+  background-color: #e0e0e0;
+}
+
+.detail-right-container > button {
+  padding: 10px;
+  background-color: #a3f3cf;
+  color: black;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.detail-right-container > button:hover {
+  background-color: #30a671;
+}
+
+.size-button {
+  padding: 10px 20px;
+  background-color: white;
+  color: #333;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.size-button:hover {
+  background-color: #a3f3cf;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.size-button:focus {
+  background-color: #a3f3cf;
+  box-shadow: 0 0 0 3px a3f3cf;
+}
+
+.cart-item-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+.item-size-name-info {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.item-number-info {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.item-number-info button {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background-color: #f8f8f8;
+  line-height: 30px;
+  text-align: center;
+}
+
+.item-number-info div {
+  margin: 0 5px;
 }
