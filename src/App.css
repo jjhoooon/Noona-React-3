@@ -65,6 +65,35 @@
   margin-bottom: 20px;
 }
 
+@media (min-width: 768px) {
+  .menu-toggle-button {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-list {
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    background-color: #ffffff;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+
+  .menu-list.open {
+    transform: translateX(0);
+  }
+
+  .menu-toggle-button {
+    display: block;
+  }
+}
+
 .search-box {
   display: flex;
   justify-content: flex-end;

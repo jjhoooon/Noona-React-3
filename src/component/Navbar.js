@@ -1,15 +1,19 @@
-import React from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-regular-svg-icons'
-import { faSearch, faSignOut } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faSearch, faSignOut, faXmark } from '@fortawesome/free-solid-svg-icons'
 
-// import { faRightToBracket } from '@fortawesome/free-solid-svg-icons'
-// /* <FontAwesomeIcon icon={faRightToBracket} size='2x' /> */
 const Navbar = ({ authentication, setAuthentication, userName }) => {
     const menuList = ['MAN', 'WOMAN', 'ESSENTIALS', 'LOOKBOOK', 'MAGAZINE', 'STOCKIST', 'BOARD', 'ARCHIVING']
 
     const navigate = useNavigate()
+
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen)
+    }
 
     const goToLoginpage = () => {
         navigate('/login')
@@ -60,10 +64,16 @@ const Navbar = ({ authentication, setAuthentication, userName }) => {
                     src='https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzA0MjhfNzQg%2FMDAxNjgyNjUxNzU5ODk3.NaNad57Oa4uAN59BAuzkf5T6-TkvuCtD6YuXahV9uxwg.5tZgjdLGgbHenkTwY93iOeIR3RuntUPGhsVVMe_aQxEg.PNG.ownmyway_ib%2F%25BC%25BC%25C5%25CD.png&type=a340'></img>
             </div>
             <div className='menu-area'>
-                <ul className='menu-list'>
+                <button className="menu-toggle-button" onClick={toggleMenu}>
+                    <FontAwesomeIcon icon={faBars} />
+                </button>
+                <ul className={`menu-list ${isMenuOpen ? 'open' : ''}`}>
                     {menuList.map((menu) => (
                         <li>{menu}</li>
                     ))}
+                    <button className="menu-toggle-button" onClick={toggleMenu}>
+                        <FontAwesomeIcon icon={faXmark} />
+                    </button>
                 </ul>
                 <div className='search-box'>
                     <FontAwesomeIcon icon={faSearch} />

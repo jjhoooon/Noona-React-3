@@ -8,7 +8,7 @@ const ProductDetail = () => {
     let { id } = useParams()
 
     const getProductDetail = async () => {
-        let url = `http://localhost:5000/products/${id}`
+        let url = `https://my-json-server.typicode.com/jjhoooon/Noona-React-3/products/${id}`
         console.log(url)
         let response = await fetch(url)
         let data = await response.json()
