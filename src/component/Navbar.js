@@ -64,13 +64,13 @@ const Navbar = ({ authentication, setAuthentication, userName }) => {
                     src='https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzA0MjhfNzQg%2FMDAxNjgyNjUxNzU5ODk3.NaNad57Oa4uAN59BAuzkf5T6-TkvuCtD6YuXahV9uxwg.5tZgjdLGgbHenkTwY93iOeIR3RuntUPGhsVVMe_aQxEg.PNG.ownmyway_ib%2F%25BC%25BC%25C5%25CD.png&type=a340'></img>
             </div>
             <div className='menu-area'>
-                <button className="menu-toggle-button" onClick={toggleMenu}>
-                    <FontAwesomeIcon icon={faBars} />
-                </button>
+                <div>
+                    <FontAwesomeIcon className="menu-toggle-button" onClick={toggleMenu} icon={faBars} />
+                </div>
                 <ul className={`menu-list ${isMenuOpen ? 'open' : ''}`}>
-                    <button className="menu-toggle-button" onClick={toggleMenu}>
-                        <FontAwesomeIcon icon={faXmark} />
-                    </button>
+                    <div>
+                        <FontAwesomeIcon className="menu-toggle-button" onClick={toggleMenu} icon={faXmark} />
+                    </div>
                     {menuList.map((menu) => (
                         <li>{menu}</li>
                     ))}
