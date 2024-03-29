@@ -73,6 +73,8 @@
 
 @media (max-width: 768px) {
   .main-wrapper {
+    display: flex;
+    flex-direction: column;
     width: 768px;
   }
 
@@ -349,4 +351,8 @@
 
 .item-number-info div {
   margin: 0 5px;
+}
+
+.product-all-area {
+  margin-left: 200px;
 }
