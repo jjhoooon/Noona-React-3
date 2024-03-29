@@ -68,12 +68,12 @@ const Navbar = ({ authentication, setAuthentication, userName }) => {
                     <FontAwesomeIcon icon={faBars} />
                 </button>
                 <ul className={`menu-list ${isMenuOpen ? 'open' : ''}`}>
-                    {menuList.map((menu) => (
-                        <li>{menu}</li>
-                    ))}
                     <button className="menu-toggle-button" onClick={toggleMenu}>
                         <FontAwesomeIcon icon={faXmark} />
                     </button>
+                    {menuList.map((menu) => (
+                        <li>{menu}</li>
+                    ))}
                 </ul>
                 <div className='search-box'>
                     <FontAwesomeIcon icon={faSearch} />
