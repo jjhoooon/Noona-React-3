@@ -21,7 +21,7 @@ const ProductAll = () => {
     }, [query])
 
     return (
-        <div>
+        <div className='product-all-area'>
             <Container fluid="lg">
                 <Row>
                     {productList.map((menu) => (
