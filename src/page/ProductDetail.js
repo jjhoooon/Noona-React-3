@@ -9,6 +9,7 @@ const ProductDetail = () => {
 
     const getProductDetail = async () => {
         let url = `https://my-json-server.typicode.com/jjhoooon/Noona-React-3/products/${id}`
+        // let url = `http://localhost:5001/products/${id}`
         console.log(url)
         let response = await fetch(url)
         let data = await response.json()

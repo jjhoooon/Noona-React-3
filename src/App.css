@@ -75,11 +75,12 @@
   .main-wrapper {
     display: flex;
     flex-direction: column;
-    width: 768px;
+    width: 100%;
   }
 
   .menu-area {
-    width: 100%;
+    width: 120%;
+    background-color: greenyellow;
   }
 
   .menu-list {
@@ -99,6 +100,10 @@
     z-index: 1000;
   }
 
+  .menu-button-box {
+    margin-bottom: 20px;
+  }
+
   .menu-list.open {
     transform: translateX(0);
   }
@@ -107,6 +112,24 @@
     align-self: center;
     margin-top: 20px;
     background-color: none;
+  }
+
+  .product-all-area {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .card-box {
+    width: 350px;
+  }
+
+  .product-col {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 70px;
   }
 }
 
@@ -354,5 +377,6 @@
 }
 
 .product-all-area {
-  margin-left: 200px;
+  display: flex;
+  justify-content: center;
 }

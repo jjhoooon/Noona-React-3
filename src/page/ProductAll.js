@@ -11,6 +11,8 @@ const ProductAll = () => {
         let searchQuery = query.get("q") || ""
         console.log("query : ", searchQuery)
         let url = `https://my-json-server.typicode.com/jjhoooon/Noona-React-3/products?q=${searchQuery}`
+        // let url = `http://localhost:5001/products?q=${searchQuery}`
+        // npx json-server db.json --port 5001
         let response = await fetch(url)
         let data = await response.json()
         setProductList(data)
@@ -25,12 +27,11 @@ const ProductAll = () => {
             <Container fluid="lg">
                 <Row>
                     {productList.map((menu) => (
-                        <Col lg={4}>
+                        <Col className='product-col' lg={4}>
                             <ProductCard item={menu} />
                         </Col>
                     ))}
                 </Row>
-
             </Container>
         </div>
 
