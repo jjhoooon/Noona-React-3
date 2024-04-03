@@ -1,3 +1,5 @@
+import { productActions } from "../reducers/productReducer"
+
 function getProducts(searchQuery) {
     return async (dispatch, getState) => {
         // let url = `https://my-json-server.typicode.com/jjhoooon/Noona-React-3/products?q=${searchQuery}`
@@ -5,7 +7,8 @@ function getProducts(searchQuery) {
         // npx json-server db.json --port 5001
         let response = await fetch(url)
         let data = await response.json()
-        dispatch({ type: "GET_PRODUCT_SUCCESS", payload: { data } })
+        // dispatch({ type: "GET_PRODUCT_SUCCESS", payload: { data } })
+        dispatch(productActions.getAllProducts({ data }))
     }
 }
 
