@@ -10,6 +10,8 @@ function authenticateReducer(state = initialState, action) {
         case "LOGIN_SUCCESS":
             console.log("login success reducer")
             return { ...state, userName: payload.userName, userPassword: payload.userPassword, authenticate: true }
+        case "LOGOUT":
+            return { ...state, authenticate: false }
         default:
             return { ...state }
     }
