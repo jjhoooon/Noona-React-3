@@ -17,24 +17,46 @@ export const fetchProducts = createAsyncThunk('product/fetchAll', async (searchQ
     }
 })
 
+export const fetchDetailProducts = createAsyncThunk('product/fetchDetail', async (id, thunkApi) => {
+    try {
+        let url = `http://localhost:5001/products/${id}`
+        let response = await fetch(url)
+        return response.json()
+    } catch (error) {
+        thunkApi.rejectWithValue(error.message)
+    }
+})
+
 
 const productSlice = createSlice({
     name: "product",
     initialState,
-    reducers: {
-        getSingleProduct(state, action) {
-            state.selectedItem = action.payload.data
-        }
-    },
+    // reducers: {
+    //     getSingleProduct(state, action) {
+    //         state.selectedItem = action.payload.data
+    //     }
+    // },
     extraReducers: (builder) => {
-        builder.addCase(fetchProducts.pending, (state) => {
-            state.isLoading = true
-        })
+        builder
+            .addCase(fetchProducts.pending, (state) => {
+                state.isLoading = true
+            })
             .addCase(fetchProducts.fulfilled, (state, action) => {
                 state.isLoading = false
                 state.productList = action.payload
             })
             .addCase(fetchProducts.rejected, (state, action) => {
+                state.isLoading = false
+                state.error = action.payload
+            })
+            .addCase(fetchDetailProducts.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(fetchDetailProducts.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.selectedItem = action.payload
+            })
+            .addCase(fetchDetailProducts.rejected, (state, action) => {
                 state.isLoading = false
                 state.error = action.payload
             })

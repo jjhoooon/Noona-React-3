@@ -4,7 +4,7 @@ import { Navigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 const PrivateRoute = () => {
-    const authentication = useSelector((state) => state.auth.authentication)
+    const authentication = useSelector((state) => state.auth.authenticate)
     return authentication == true ? <ProductDetail /> : <Navigate to='/login' />
 }
 
