@@ -9,7 +9,7 @@ let initialState = {
 
 export const fetchProducts = createAsyncThunk('product/fetchAll', async (searchQuery, thunkApi) => {
     try {
-        let url = `http://localhost:5001/products?q=${searchQuery}`
+        let url = `https://my-json-server.typicode.com/jjhoooon/Noona-React-3/products?q=${searchQuery}`
         let response = await fetch(url)
         return await response.json()
     } catch (error) {
@@ -19,7 +19,7 @@ export const fetchProducts = createAsyncThunk('product/fetchAll', async (searchQ
 
 export const fetchDetailProducts = createAsyncThunk('product/fetchDetail', async (id, thunkApi) => {
     try {
-        let url = `http://localhost:5001/products/${id}`
+        let url = `https://my-json-server.typicode.com/jjhoooon/Noona-React-3/products/${id}`
         let response = await fetch(url)
         return response.json()
     } catch (error) {
