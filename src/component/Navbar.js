@@ -3,8 +3,14 @@ import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-regular-svg-icons'
 import { faBars, faSearch, faSignOut, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { useDispatch, useSelector } from 'react-redux'
+import { authenticateAction } from '../redux/actions/authenticateAction'
 
-const Navbar = ({ authentication, setAuthentication, userName }) => {
+const Navbar = () => {
+    const dispatch = useDispatch()
+    const authentication = useSelector((state) => state.auth.authenticate)
+    const userName = useSelector((state) => state.auth.userName)
+    const userPassword = useSelector((state) => state.auth.userPassword)
     const menuList = ['MAN', 'WOMAN', 'ESSENTIALS', 'LOOKBOOK', 'MAGAZINE', 'STOCKIST', 'BOARD', 'ARCHIVING']
 
     const navigate = useNavigate()
@@ -24,7 +30,7 @@ const Navbar = ({ authentication, setAuthentication, userName }) => {
     }
 
     const getLogout = () => {
-        setAuthentication(false)
+        dispatch(authenticateAction.logout())
         alert("로그아웃 되었습니다.")
     }
 
